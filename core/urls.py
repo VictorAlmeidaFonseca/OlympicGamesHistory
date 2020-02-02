@@ -13,9 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+
+from django.urls import include, path
+from rest_framework import routers
+from olympic_api import views
+
+router = routers.DefaultRouter()
+router.register(r'athlete', views.AthleteViewSet)
+router.register(r'teamregion', views.TeamRegionViewSet)
+router.register(r'game', views.GameViewSet)
+router.register(r'event', views.EventViewSet)
+router.register(r'sport', views.SportViewSet)
+router.register(r'champion', views.ChampionViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('olympic/', include('rest_framework.urls', namespace='rest_framework')),
 ]

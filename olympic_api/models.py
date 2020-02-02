@@ -20,6 +20,13 @@ class TeamRegion(models.Model):
                                                                             "Olympic Committee")
     notes = models.CharField(max_length=255, null=True, blank=True)
 
+    class Meta:
+        db_table = "team_region"
+
+    def __str__(self):
+        return self.name
+
+
 
 class Athlete(models.Model):
     """
@@ -35,6 +42,12 @@ class Athlete(models.Model):
                                                                                                  "key refers to "
                                                                                                  "TeamRegion primary "
                                                                                                  "key")
+    class Meta:
+        db_table = "athlete"
+
+    def __str__(self):
+        return self.name
+
 
 class Game(models.Model):
     """
@@ -44,12 +57,24 @@ class Game(models.Model):
     season =  models.CharField(max_length=6, choices=SeasonType.choices, null=False, blank=False, help_text="Field store the season of the game")
     city = models.CharField(max_length=30, null=False, blank=False, help_text="Field store the city of the game")
 
+    class Meta:
+        db_table = "game"
+
+    def __str__(self):
+        return '%s %s - %s' % (self.year, self.season, self.city)
+
 
 class Sport(models.Model):
     """
     Class for store information about the sports on the Olympic Games.
     """
     name = models.CharField(max_length=500, null=False, blank=False, help_text="Field store the Sport's name")
+
+    class Meta:
+        db_table = "sport"
+
+    def __str__(self):
+        return self.name
 
 
 class Event(models.Model):
@@ -64,6 +89,11 @@ class Event(models.Model):
                                                                                               "event's gender")
     description = models.CharField(max_length=500, null=False, blank=False, help_text="Field store the description of "
                                                                                       "the event")
+    class Meta:
+        db_table = "event"
+
+    def __str__(self):
+        return '%s %s - %s' % (self.sport, self.gender, self.description)
 
 
 class Champion(models.Model):
