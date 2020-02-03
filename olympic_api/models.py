@@ -35,7 +35,7 @@ class Athlete(models.Model):
     name = models.CharField(max_length=500, null=False, blank=False, help_text="Field store the Athlete's name")
     sex = models.CharField(max_length=1, null=False, blank=False,  choices=SexType.choices, help_text="Field store the "
                                                                                               "Athlete's sex")
-    age = models.IntegerField(null=False, blank=False)
+    age = models.IntegerField(null=False, blank=False, help_text="Field store the Athlete's age")
     height = models.IntegerField(help_text="Field store the Athlete's height in centimeters")
     weight = models.IntegerField(help_text="Field store the Athlete's weight in kilograms")
     team_region = models.ForeignKey(TeamRegion, null=False, blank=False, on_delete=models.PROTECT, help_text="Field store foreing "

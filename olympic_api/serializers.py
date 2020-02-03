@@ -6,6 +6,11 @@ class AthleteSerializer(serializers.HyperlinkedModelSerializer):
         model = Athlete
         fields = "__all__"
 
+class AthleteSerializerList(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Athlete
+        fields = ['name', 'age', 'team_region__name', 'team_region__noc']
+
 
 class TeamRegionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
