@@ -20,11 +20,7 @@ from olympic_api import views
 
 router = routers.DefaultRouter()
 router.register(r'athlete', views.AthleteViewSet)
-router.register(r'athlete', views.AthleteListView)
 router.register(r'teamregion', views.TeamRegionViewSet)
-router.register(r'game', views.GameViewSet)
-router.register(r'event', views.EventViewSet)
-router.register(r'sport', views.SportViewSet)
 router.register(r'champion', views.ChampionViewSet)
 
 urlpatterns = [

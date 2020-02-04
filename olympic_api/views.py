@@ -1,8 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, viewsets, generics
-from .models import Athlete, TeamRegion, Game, Event, Sport, Champion
-from .serializers import AthleteSerializer, TeamRegionSerializer, GameSerializer, EventSerializer, SportSerializer, \
-    ChampionSerializer, AthleteSerializerList
+from .models import Athlete, TeamRegion, Champion
+from .serializers import AthleteSerializer, TeamRegionSerializer, ChampionSerializer
 
 
 class AthleteViewSet(viewsets.ModelViewSet):
@@ -15,20 +14,7 @@ class AthleteViewSet(viewsets.ModelViewSet):
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'age', 'team_region__name', 'team_region__noc']
-
-
-class AthleteListView(viewsets.ModelViewSet):
-    """
-    API endpoint allow Athletes to be viewed or edited.
-    The API can be filtered by name, age, team_region or noc. The search behavior may be using starts-with .
-    The fields in  filter can be optional.
-
-   """
-    queryset = Athlete.objects.all()
-    serializer_class = AthleteSerializerList
-    filter_backends = [filters.SearchFilter]
-    filterset_fields = ['name', 'age', 'team_region__name', 'team_region__noc']
+    filterset_fields = ['name', 'age', 'noc_team_region__name', 'noc_team_region']
 
 
 class TeamRegionViewSet(viewsets.ModelViewSet):
@@ -43,42 +29,6 @@ class TeamRegionViewSet(viewsets.ModelViewSet):
     filterset_fields = ['name', 'noc',]
 
 
-class GameViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint allow Games to be viewed or edited.
-    The API can be filtered by year, season and/or city using exactly the same value in the field. The fields in
-    filter can be optional.
-    """
-    queryset = Game.objects.all()
-    serializer_class = GameSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['year', 'season','city']
-
-
-class EventViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint allow Events to be viewed or edited.
-    The API can be filtered by sport and/or gender using exactly the same value in the field. The fields in
-    filter can be optional.
-    """
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['sport', 'gender']
-
-
-class SportViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint allow Sports to be viewed or edited.
-    The API can be filtered by name . The search behavior may be using starts-with.
-    The fields in  filter can be optional.
-    """
-    queryset = Sport.objects.all()
-    serializer_class = SportSerializer
-    filter_backends = [filters.SearchFilter]
-    filterset_fields = ['name']
-
-
 class ChampionViewSet(viewsets.ModelViewSet):
     """
     API endpoint allow Events to be viewed or edited.
@@ -88,4 +38,4 @@ class ChampionViewSet(viewsets.ModelViewSet):
     queryset = Champion.objects.all()
     serializer_class = ChampionSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['athlete' , 'event', 'medal']
+    filterset_fields = ['game', 'city' , 'athlete' , 'event' , 'medal']
