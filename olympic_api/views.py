@@ -14,7 +14,7 @@ class AthleteViewSet(viewsets.ModelViewSet):
     queryset = Athlete.objects.all()
     serializer_class = AthleteSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'age', 'noc_team_region__name', 'noc_team_region']
+    filterset_fields = ['name', 'age', 'noc_team_region']
 
 
 class TeamRegionViewSet(viewsets.ModelViewSet):
@@ -26,7 +26,7 @@ class TeamRegionViewSet(viewsets.ModelViewSet):
     queryset = TeamRegion.objects.all()
     serializer_class = TeamRegionSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'noc',]
+    filterset_fields = ['region', 'NOC']
 
 
 class ChampionViewSet(viewsets.ModelViewSet):
