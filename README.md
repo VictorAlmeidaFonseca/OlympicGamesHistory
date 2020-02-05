@@ -6,15 +6,17 @@
 
 You can get this project following the steps below:
 
-...
-https://github.com/VictorAlmeidaFonseca/OlympicGamesHistory.git
-cd estoque
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python manage.py makemigrations
-pyhton manage.py migrate
-...
+
+
+- git clone https://github.com/VictorAlmeidaFonseca/OlympicGamesHistory.git
+- cd OlympicGamesHistory
+- python3 -m venv .venv
+- source .venv/bin/activate
+- pip install -r requirements.txt
+- python manage.py makemigrations
+- pyhton manage.py migrate
+
+
 
 ### Next Steps
 
