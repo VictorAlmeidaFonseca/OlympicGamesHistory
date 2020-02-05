@@ -62,3 +62,6 @@ class Champion(models.Model):
 
     medal = models.CharField(max_length=6, null=False, blank=False,  choices=MedalType.choices,
                              help_text="Field store the Athlete's medal")
+
+    class Meta:
+        db_table = "champion"

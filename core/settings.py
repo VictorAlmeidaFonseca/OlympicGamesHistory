@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',
     'olympic_api',
-    'django_filters'
+    'django_filters',
+    'script'
 ]
 
 MIDDLEWARE = [
