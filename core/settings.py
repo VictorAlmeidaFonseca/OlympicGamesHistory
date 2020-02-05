@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'olympic_api',
     'django_filters',
-    'script'
+    'script',
+    'import_export'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
